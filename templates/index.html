@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 250px;
+        }
+    </style>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        let isOn = false;
+        function getSomething() {
+            isOn = !isOn;
+            axios.post('/led', {isOn})
+                .then(res => {
+                    console.log(res);
+                }).catch(err => {
+                    console.log(err);
+            })
+        }
+    </script>
+</head>
+<body>
+    <button onclick="getSomething()"><h1>Click me!</h1></button>
+</body>
+</html>
